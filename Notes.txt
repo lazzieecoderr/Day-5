@@ -1,0 +1,168 @@
+Contents:
+var vs let vs const
+block scoping
+spread & rest operators
+array & object destructure
+Object property shorthand
+Template literals
+Arrow functions
+
+
+var/let/const :-
+Hoisting & scoping:-
+=> If we a print a variable without declaration it leads to Hoisting
+=> In var it will print undefined
+=> In let and const it will throw error
+=> It is a developer mistake
+=> Let and const block varaibles
+=> var global variables
+
+example for Hoisting
+//!Hoisting
+console.log(a);
+var/let/const a =2;
+
+example for redeclare and reassign
+var a = 10;
+var a =20 ;
+console.log(a);
+
+
+let b = 30;
+b = 50;
+console.log(b);
+
+const c = 10 
+console.log(c);
+
+example for scoping
+function test(){
+let a = 10;
+ if(true){
+    let b = 20;
+ }
+ console.log(a);
+}
+test();
+
+------------------------------------------------
+array & object destructure
+//!Array destructing
+const arr = ["🍉","🍏","🍓","🍒","🍌"]
+
+//!without desctructring
+const watermeleon = arr[0]
+const apple = arr[1]
+const strawberry = arr[2]
+const cherry = arr[3]
+const bannana = arr[4]
+console.log(watermeleon,apple,strawberry,cherry,bannana);
+
+//!with destructring
+// const [variablenameofindex] = arrayname
+const [water,app,straw,cher,ban,orange="🍑"] =arr
+console.log(water,app,straw,cher,ban);
+
+//!object destrcturing
+let obj = {
+    names: "John",
+    age:30,
+    address:{
+        city:"chennai",
+        state:"TamilNadu"
+    }
+}
+//!Without destrctring
+/*console.log(obj.names);
+console.log(obj.age);
+console.log(obj.address.city);
+console.log(obj.address.state);
+*/
+//!with destructring
+// const {key} = objectname
+let {names,age,address:{city,state},mobile=9876543210}=obj
+console.log(names,age,city,state,mobile);
+
+//!Array of object destrcturing
+const groceryshop = [
+    {item:"brownrice",price:100,category:"grains"},
+    {item:"apple",price:50,category:"fruits"},
+    {item:"tomato",price:35,category:"vegetables"}
+]
+//!Without destrctring
+// console.log(groceryshop);
+// console.log(groceryshop[0].item);
+//!with destructring
+const [{item,price,category}]=groceryshop
+console.log(item,price,category);
+
+//! object of array destrcturing
+let obj = {
+    names: "John",
+    age:30,
+    address:["chennai","tamilnadu","india"]
+}
+//!with destructring
+let {names,age,address:[city,state,country]}=obj
+console.log(city,state,country,names,age)
+-------------------------------
+Object property shorthand
+//!Object property shorthand example
+//!normal without shorthand
+/*
+const order = {
+    id:100,
+    pizza:"farmhouse"
+}
+console.log(order.id,order.pizza);
+*/
+//!using shorthand property
+const id = 101;
+const pizza = "farmhouse";
+const order ={
+    id,
+    pizza
+}
+console.log(order);
+------------------------------------------------------
+Template Literals 
+syntax:- `${expression}`
+//!Template literals example
+const a =10;
+const b = 20;
+const c = 30;
+//console.log("the value of a is",a +" "+ "the value of b is",b);
+//!using template literal
+console.log(`the value of a is ${a} 
+the value of b is ${b}
+the value of c is ${c}
+the sum of a,b,c is ${a+b+c}`
+);
+----------------------------------------------------------------
+spread operator and rest parameter
+syntax:- ...
+spread operator:- converts string to a character array
+//!spread operator 
+//example 1
+const arr = ["guvi","geek"]
+console.log(...arr);
+//example 2 
+const arr1 = ["bob","john","alice"]
+const arr2 = ["elisa","satya","leo"]
+const arr3 = [...arr1,...arr2]
+console.log(arr3);
+
+rest parameter:- It is used inside the function to consider the remaining values
+syntax:- ...
+//!rest paramter
+function test (a,...c){
+    let even = []
+    for(var i=0;i<c.length;i++){
+        if(c[i]%2===0){
+            even.push(c[i])
+        }
+    }
+    return even
+} 
+console.log(test(12,13,14,15,16));
+--------------------------------------
